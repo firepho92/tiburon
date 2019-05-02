@@ -1,0 +1,10 @@
+{
+  "devToolsPort": 19002,
+  "expoServerPort": 19000,
+  "packagerPort": 19001,
+  "packagerPid": 9275,
+  "expoServerNgrokUrl": "https://45-43t.firepho.mpos.exp.direct",
+  "packagerNgrokUrl": "https://packager.45-43t.firepho.mpos.exp.direct",
+  "ngrokPid": 9367,
+  "webpackServerPort": null
+}
