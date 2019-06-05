@@ -1,6 +1,7 @@
 import React from 'react';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
+import MaterialAlert from '../components/MaterialAlert';
 import AppContext from '../context/AppContext';
 import axios from 'axios';
 import logo from '../assets/logo.png'
@@ -29,12 +30,18 @@ class Authentication extends React.Component {
 
 	_onSubmit = (e, _setUser, _showAlert) => {
 		e.preventDefault();
-		axios.post('direccion', {user: this.state.user, password: this.state.password})
+		axios.post('http://localhost:8000/auth', {alias: this.state.user, password: this.state.password})
 		.then(response => {
-
+			if(response.data.length > 0) {
+				console.log(response.data[0])
+				_setUser(response.data[0])
+				
+			} else {
+				_showAlert('Usuario o contraseña no encontrados', 'Alerta')
+			}
 		})
 		.catch(error => {
-			
+			_showAlert('Hubo un problema con el sevidor, intenta más tarde', 'Error')
 		});
 	}
 
@@ -43,6 +50,9 @@ class Authentication extends React.Component {
       <AppContext.Consumer>
       {context => (
 				<div className="authentication">
+
+					<MaterialAlert inProp={true}/>
+
 	      	<div className="authWrapper">
 						
 						<img width="200" src={logo} alt="Tiburón"/>
