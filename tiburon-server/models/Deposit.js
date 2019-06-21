@@ -28,4 +28,13 @@ module.exports = class Deposit {
       });
     });
   }
+
+  readDepositsByCustomer(customer_id) {
+    return new Promise((resolve, reject) => {
+      connection.query('SELECT deposit_id, deposit_date, payment_type, customer_name, ammount FROM Deposits INNER JOIN Customers ON Deposits.customer = Customers.customer_id WHERE customer = ' + customer_id, (error, results, fields) => {
+        if(error) throw error;
+        resolve(results);
+      });
+    });
+  }
 }
