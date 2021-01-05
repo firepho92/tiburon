@@ -10,7 +10,7 @@
         "all": "npm run build && npm run test"
     },
     "dependencies": {
-        "axios": "^0.18.0",
+        "axios": "^0.21.1",
         "construx": "^1.0.0",
         "construx-copier": "^1.0.0",
         "eslint": "^1.10.3",
